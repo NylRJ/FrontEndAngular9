@@ -11,7 +11,8 @@ import { error } from 'protractor';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService,
+     private router: Router) { }
 
   ngOnInit() {
   }

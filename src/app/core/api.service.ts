@@ -90,7 +90,7 @@ export class ApiService {
   getUsers():Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}`,AppUtils.OPTIONS_OBJECTO);
   }
-  getRoles(roles:Array<any>):Observable<any>{
+  getRole(roles:Array<any>):Observable<any>{
     let role: any;
     if(this.isAuthenticated() && roles){
       if(roles.length >0){

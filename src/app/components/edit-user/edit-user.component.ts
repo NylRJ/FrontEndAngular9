@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserDTO } from 'src/app/core/model/userDTO';
-import { error } from 'protractor';
+
 
 @Component({
   selector: 'app-edit-user',
@@ -11,32 +11,31 @@ import { error } from 'protractor';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
-  user = new UserDTO();
-  idUser:string;
-  constructor(private apiServe: ApiService,
-              private route:ActivatedRoute,
-              private location:Location) { }
+  user = new  UserDTO();
+  idUser: string;
+
+  constructor(private apiService: ApiService,
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
     this.idUser = this.route.snapshot.paramMap.get('id');
-    this.apiServe.getUserById(this.idUser).subscribe(user =>{
-      console.log('Usuario encontrado com sucesso!');
-    }, error =>{
-      console.log('Erro ao atualizar usuário!',error);
+    this.apiService.getUserById(this.idUser).subscribe(user => {
+     this.user = user;
+     console.log('Retornou usuário com sucesso! ');
+    }, error => {
+      console.log('Error ao pegar usuário por ID! ', error);
     });
   }
-
-  update():void{
+  update(): void {
     this.user.id = this.idUser;
-    this.apiServe.updateUser(this.user).subscribe(() =>{
+    this.apiService.updateUser(this.user).subscribe(() => {
       this.goBack();
-    }, error =>{
-      console.log('Erro ao Atualizar!',error);
+    }, error => {
+      console.log('Error ao atualizar usuário! ', error);
     });
   }
-  
-  goBack(){
+  goBack() {
     this.location.back();
   }
-
 }

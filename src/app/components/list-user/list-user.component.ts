@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { UserDTO } from 'src/app/core/model/userDTO';
-import { error } from 'protractor';
 
 @Component({
   selector: 'app-list-user',
@@ -11,28 +10,29 @@ import { error } from 'protractor';
 })
 export class ListUserComponent implements OnInit {
   users: UserDTO[];
-  constructor(private router:Router,private apiServe:ApiService) { }
+
+  constructor(private router: Router,
+              private apiService: ApiService) { }
 
   ngOnInit() {
-    if(!this.apiServe.isAuthenticated()){
+    if (!this.apiService.isAuthenticated()) {
       this.router.navigate(['login']);
     }
-    this.apiServe.getUsers().subscribe(users =>{
+    this.apiService.getUsers().subscribe(users => {
       this.users = users;
-    }, error=>{
-      console.log('Erro ao listar Usuários!');
+    }, error => {
+      console.log('Error ao pegar a lista de usuários! ', error);
     });
   }
-
-  getRoles(user:UserDTO){
-    return this.apiServe.getRoles(user.roles);
+  getRole(user: UserDTO) {
+    return this.apiService.getRole(user.roles);
   }
-  deleteUser(user:UserDTO){
-    this.apiServe.deleteUser(user.id).subscribe(() =>{
+  deleteUser(user: UserDTO): void {
+    this.apiService.deleteUser(user.id).subscribe(() => {
       this.users = this.users.filter(u => u.id !== user.id);
-    },error =>{
-      console.log('Erro ao deletar usuário!',error);
+
+    }, error => {
+      console.log('Error ao deletar usuário! ', error);
     });
   }
-
 }
