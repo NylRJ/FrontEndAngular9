@@ -19,7 +19,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.idUser = this.route.snapshot.paramMap.get('id');
-    this.apiServe.getUserByid(this.idUser).subscribe(user =>{
+    this.apiServe.getUserById(this.idUser).subscribe(user =>{
       console.log('Usuario encontrado com sucesso!');
     }, error =>{
       console.log('Erro ao atualizar usuário!',error);
@@ -28,7 +28,7 @@ export class EditUserComponent implements OnInit {
 
   update():void{
     this.user.id = this.idUser;
-    this.apiServe.update(this.user).subscribe(() =>{
+    this.apiServe.updateUser(this.user).subscribe(() =>{
       this.goBack();
     }, error =>{
       console.log('Erro ao Atualizar!',error);
