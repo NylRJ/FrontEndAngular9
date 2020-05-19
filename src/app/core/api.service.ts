@@ -107,4 +107,11 @@ export class ApiService {
    return this.httpClient.delete<any>(`${this.baseUrl}/${id}}`,AppUtils.OPTIONS_OBJECTO );
   }
 
+  getUserByid(id:string):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${id}`,AppUtils.OPTIONS_OBJECTO);
+  }
+  update(user:UserDTO):Observable<any>{
+    return this.httpClient.put<any>(`${this.baseUrl}/${user.id}`,user,AppUtils.OPTIONS_OBJECTO);
+  }
+
 }
