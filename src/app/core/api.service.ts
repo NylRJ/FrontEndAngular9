@@ -103,4 +103,8 @@ export class ApiService {
     
   }
 
+  deleteUser(id: string):Observable<any>{
+   return this.httpClient.delete<any>(`${this.baseUrl}/${id}}`,AppUtils.OPTIONS_OBJECTO );
+  }
+
 }
