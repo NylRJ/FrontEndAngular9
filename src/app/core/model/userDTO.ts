@@ -6,6 +6,6 @@ export class UserDTO {
     firstName: string;
     lastName: string;
     password: string;
-    enabled?: boolean;
+    enable?: boolean;
     roles?: Array<Role>;
 }

@@ -9,21 +9,21 @@ import { Location } from '@angular/common';
   styleUrls: ['./register-user.component.scss']
 })
 export class RegisterUserComponent implements OnInit {
-  public user = new UserDTO;
-  constructor(private apiServe:ApiService, private location:Location) { }
+  public user = new UserDTO();
+
+  constructor(private apiService: ApiService, private location: Location) { }
 
   ngOnInit() {
   }
 
-  save():void{
-      this.apiServe.registerUser(this.user).subscribe(data =>{
-        console.log('Usuario registrado com sucesso!');
-      }, error =>{
-        console.log('Erro ao registrado Usuario ', error);
-      });
+  save(): void {
+    this.apiService.registerUser(this.user).subscribe(data => {
+      console.log('Usuários registrado com sucesso!');
+    }, error => {
+      console.log('Error ao criar usuário ', error);
+    });
   }
-  goback(){
+  goBack() {
     this.location.back();
   }
-
 }

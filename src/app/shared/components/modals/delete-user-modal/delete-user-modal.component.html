@@ -1,5 +1,7 @@
-<div mdbModal #deleteUserModal="mdb-modal" class="modal fade right" id="frameModalTop" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true" (close)="onClose($event)">
+
+
+  <div mdbModal #deleteUserModal="mdb-modal" class="modal fade right" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" (close)="onClose($event)">
   <div class="modal-dialog modal-notify modal-danger modal-side modal-top-right" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -31,12 +33,10 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-        <a (click)="delete()" type="button" mdbBtn color="danger" outline="true" class="waves-effect"
-          mdbWavesEffect>Confirmar
+        <a (click)="delete()" type="button" mdbBtn color="danger" outline="true" class="waves-effect" mdbWavesEffect>Confirmar
           <i class="fa fa-diamond ml-1"></i>
         </a>
-        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect
-          (click)="deleteUserModal.hide()" data-dismiss="modal">Cancelar</a>
+        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="deleteUserModal.hide()" data-dismiss="modal">Cancelar</a>
       </div>
     </div>
     <!--/.Content-->

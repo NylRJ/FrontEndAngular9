@@ -20,6 +20,7 @@ export class LoginUserComponent implements OnInit {
   public login() {
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
+      console.log(data);
     }, error => {
       console.log('Error ao fazer LOGIN!');
     });
@@ -32,6 +33,7 @@ export class LoginUserComponent implements OnInit {
     this.apiService.getMainUser(localStorage.getItem('accessToken')).subscribe(user => {
       this.redirectPage(user);
     }, error => {
+      
       console.log('Error ao pegar usuário logado!');
     });
   }
