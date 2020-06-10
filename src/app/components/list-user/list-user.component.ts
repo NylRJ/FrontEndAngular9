@@ -32,6 +32,8 @@ export class ListUserComponent implements OnInit {
       this.users = this.users.filter(u => u.id !== user.id);
 
     }, error => {
+
+      
       console.log('Error ao deletar usuário! ', error);
     });
   }

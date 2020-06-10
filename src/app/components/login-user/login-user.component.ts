@@ -36,7 +36,9 @@ export class LoginUserComponent implements OnInit {
       
       console.log('Error ao pegar usuário logado!');
     });
+
   }
+  
 
   public  redirectPage(user: any) {
     localStorage.setItem('currentUser', JSON.stringify(user));
